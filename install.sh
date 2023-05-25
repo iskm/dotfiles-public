@@ -41,6 +41,14 @@ cd ~/dotfiles-public
 stow bash git ranger shellenv tmux vim zsh
 cd -
 
+# install the only fonts you'll need :>
+cd ~/dotfiles-public/fonts/fonts
+chmod u+x install.sh
+./install.sh
+cd ~
+
+
+
 echo "Good luck, Amigo!!"
 
 
