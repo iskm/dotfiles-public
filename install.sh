@@ -3,15 +3,32 @@
 # Author: Ibrahim Mkusa
 # About: setup dotfiles
 
+# Asks whether user is on a ubuntu or fedora distribution
+echo -n "Are you on [ubuntu/fedora]"
+read -r response
+if [[ "$response" == "ubuntu" ]]; then
+  manager="apt"
+  vim="vim-nox" 
+  # install build essential libs
+  sudo apt install -y build-essential cmake python3-dev
+elif [[ "$response" == "fedora" ]]; then
+  manager="dnf"
+  vim="vim-enhanced"
+  sudo dnf install -y make automake gcc gcc-c++ kernel-devel \
+    cmake python3-devel 
+else
+  echo "No distro-specified. Exitting .."
+  exit 1
+fi
+
+
 set -e
 cd ~
-sudo apt update -yy && sudo apt upgrade -yy
+sudo $manager update -y && sudo $manager upgrade -y
 
-# install build essential libs
-sudo apt install -y build-essential cmake python3-dev
 
 # install core programs
-sudo apt install -y vim-nox git tmux neofetch curl ranger silversearcher-ag \
+sudo $manager install -y $vim git tmux neofetch curl ranger silversearcher-ag \
   direnv glances gedit-plugins zsh stow
 
 # prompt to install tmux plugin manager
