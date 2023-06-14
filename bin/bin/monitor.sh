@@ -11,12 +11,13 @@ usage () {
 if [[ "$2" == "up" ]];then
   # kill all interfering processes
   sudo airmon-ng check kill
-  # change mac address
-  sudo ifconfig "$1" down
-  sudo macchanger -A "$1"
-  sudo ifconfig "$1" up
-  # start card in monitor mode optionally locked to channel
+   # start card in monitor mode optionally locked to channel
   sudo airmon-ng start "$1" "$3"
+   # change mac address
+  sudo ifconfig "$1mon" down
+  sudo macchanger -A "$1mon"
+  sudo ifconfig "$1mon" up
+
 elif [[ "$2" == "down" ]];then
   sudo airmon-ng stop "$1"
   sudo systemctl restart NetworkManager.service || true
