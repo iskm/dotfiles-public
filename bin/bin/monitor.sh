@@ -17,12 +17,15 @@ if [[ "$2" == "up" ]];then
   sudo ifconfig "$1mon" down
   sudo macchanger -A "$1mon"
   sudo ifconfig "$1mon" up
+  iwconfig
+  sudo macchanger --show "$1mon"
 
 elif [[ "$2" == "down" ]];then
   sudo airmon-ng stop "$1"
   sudo systemctl restart NetworkManager.service || true
   sudo systemctl restart wpa_supplicant.service || true
   nmcli networking on || true
+  iwconfig
 else
   usage
 fi
