@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Ibrahim Mkusa
+# Author: l33th4ck3r
 # About: Places card into monitor mode and changes mac addresses
 
 set -e

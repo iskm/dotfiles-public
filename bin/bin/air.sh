@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Ibrahim Mkusa
+# Author: l33th4ck3r
 # About: Higher interface to aircrack tools
 
 set -e
